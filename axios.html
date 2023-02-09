@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// AXIOS GLOBALS
+axios.defaults.headers.common['X-Auth-Token'] =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+
+// GET REQUEST
+function getTodos() {
+  // axios({
+  //   method: 'get',
+  //   url: 'https://jsonplaceholder.typicode.com/todos',
+  //   params: {
+  //     _limit: 5
+  //   }
+  // })
+  //   .then(res => showOutput(res))
+  //   .catch(err => console.error(err));
+
+  axios
+    .get('https://jsonplaceholder.typicode.com/todos?_limit=5', {
+      timeout: 5000
+    })
+    .then(res => showOutput(res))
+    .catch(err => console.error(err));
+  console.log('GET Request');
+}
+
+// POST REQUEST
+function addTodo() {
+  axios
+    .post('https://jsonplaceholder.typicode.com/todos', {
+      title: 'New Todo',
+      completed: false
+    })
+    .then(res => showOutput(res))
+    .catch(err => console.error(err));
+  console.log('POST Request');
+}
+
+// PUT/PATCH REQUEST
+function updateTodo() {
+  axios
+    .patch('https://jsonplaceholder.typicode.com/todos/1', {
+      title: 'Updated Todo',
+      completed: true
+    })
+</script>
+</body>
+</html>
